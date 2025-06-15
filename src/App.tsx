@@ -1,19 +1,28 @@
 import { useEffect } from "react";
 import { useUserStore } from "./store/userStore";
+import { UserCard } from "./components/UserCard";
 
 function App() {
-  const { users, getUsers } = useUserStore();
+  const { users, getUsers, setUsers, isUsersFetching, setUsersFetching } =
+    useUserStore();
 
   useEffect(() => {
-    getUsers();
-  }, [getUsers]);
+    setUsersFetching(true);
+    getUsers().then((data) => {
+      setUsers(data);
+      setUsersFetching(false);
+    });
+  }, []);
 
   return (
     <>
-      {"Hello world!"}
-      {users.map((user) => (
-        <p>{user}</p>
-      ))}
+      {isUsersFetching ? (
+        <h3>{"Getting users..."}</h3>
+      ) : (
+        users.map((user) => {
+          return <UserCard user={user} key={user.login.uuid} />;
+        })
+      )}
     </>
   );
 }
