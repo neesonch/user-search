@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useUserStore } from "./store/userStore";
-import { UserCard } from "./components/UserCard";
+import { UserCards } from "./components/UserCards/UserCards";
 
 function App() {
   const { users, getUsers, setUsers, isUsersFetching, setUsersFetching } =
@@ -19,9 +19,7 @@ function App() {
       {isUsersFetching ? (
         <h3>{"Getting users..."}</h3>
       ) : (
-        users.map((user) => {
-          return <UserCard user={user} key={user.login.uuid} />;
-        })
+        <UserCards users={users} />
       )}
     </>
   );

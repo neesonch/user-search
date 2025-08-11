@@ -16,7 +16,7 @@ export const useUserStore = create<UserState>()((set) => ({
   setUsersFetching: (isFetching: boolean) =>
     set(() => ({ isUsersFetching: isFetching })),
   getUsers: async () => {
-    const response = await fetch("https://randomuser.me/api/?results=50");
+    const response = await fetch("https://randomuser.me/api/?results=20");
     const json = await response.json();
     return json.results;
   },
