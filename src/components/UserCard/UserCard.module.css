@@ -2,8 +2,22 @@
   border: 1px solid blue;
   border-radius: 5px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 5px;
+  gap: 5px;
 }
 
-.userCardThumbnailWrapper {
+.userThumbnailWrapper {
   border-radius: 100%;
+}
+
+.userDetailsWrapper p,
+.userDetailsWrapper h3 {
+  line-height: 0.25;
+}
+
+.userDetailsWrapper a {
+  text-decoration: none;
 }

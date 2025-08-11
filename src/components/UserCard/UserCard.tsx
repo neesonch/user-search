@@ -1,13 +1,20 @@
 import { type UserCardProps } from "../../types";
-import { UserCardThumbnail } from "./components/UserCardThumbnail";
+import { UserThumbnail, UserDetails } from "./components/";
+
 import styles from "./UserCard.module.css";
 
 export const UserCard = (props: UserCardProps) => {
-  const { name, picture } = props.user;
+  const { name, picture, location, dob, email, phone } = props.user;
   return (
     <div className={styles.userCardWrapper}>
-      <p>{`I'm ${name.first} ${name.last}!`}</p>
-      <UserCardThumbnail imageUrl={picture.medium} />
+      <UserThumbnail imageUrl={picture.medium} />
+      <UserDetails
+        name={name}
+        location={location}
+        dob={dob}
+        email={email}
+        phone={phone}
+      />
     </div>
   );
 };
