@@ -51,7 +51,7 @@ An implementation of the below coding challenge, done for the purpose of getting
 
 3. Each person should be rendered in cards that look something like these:
 
-   ![examples, two people](./public/_____cc_1.png)
+(image not available)
 
 4. Once you have a list, add the following filters, below the heading and above the list:
 
@@ -67,14 +67,14 @@ An implementation of the below coding challenge, done for the purpose of getting
 
 6. At this point you should have something that may look like this, but with more people (if you use a different mechanism for sorting, that's totally fine):
 
-   ![completed project](./public/_____cc_2.png)
+   (image not available)
 
 7. Add a way to add, update, and remove a note for any person in the list. (Because the API is _random_, feel free to store these in application state; if the page has to reload, it's OK to lose any notes as there is no guarantee that you'll have the same identifiers for the people you receive from a request.) A few visual examples:
    - Initial state with no notes:
-     ![card with 'add note' button](./public/_____cc_3.png)
+     (image not available)
    - The form (if a note already exists, the label should read "Edit note"):
-     ![the open form, with a labeled input and submit and cancel buttons](./public/_____cc_4.png)
+     (image not available)
    - Cards with notes attached:
-     ![multiple rendered notes, with a heading and edit and delete buttons](./public/_____cc_5.png)
+     (image not available)
 
 ---
