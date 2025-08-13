@@ -1,54 +1,80 @@
-# React + TypeScript + Vite
+# user-search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An implementation of the below coding challenge, done for the purposes of getting familiar with Vite and CSS Modules.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Fetch data from the [Random User Generator API](https://randomuser.me/), using `https://randomuser.me/api/?results=50`. The response will look like this (truncated to show one result and only the fields we care about for this exercise):
 
-## Expanding the ESLint configuration
+   ```json
+   {
+     "results": [
+       {
+         "name": {
+           "first": "Jennie",
+           "last": "Nichols"
+         },
+         "location": {
+           "country": "United States"
+         },
+         "email": "jennie.nichols@example.com",
+         "dob": {
+           "date": "1992-03-08T15:13:16.688Z"
+         },
+         "phone": "(272) 790-0888",
+         "picture": {
+           "large": "https://randomuser.me/api/portraits/men/75.jpg",
+           "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
+           "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+         },
+         "login": {
+           "uuid": "7a0eed16-9430-4d68-901f-c0d4c1c3bf00",
+           "username": "yellowpeacock117"
+         },
+         "id": {
+           "name": "SSN",
+           "value": "XXX-XX-XXXX"
+         }
+       }
+     ]
+   }
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2. Take this data and render a list of people, with the list in alphabetical order by last name. Each item should show the following values:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+   - full name
+   - photo
+   - country
+   - birthday (formatted `m/d/yyyy`)
+   - email (linked)
+   - phone
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Each person should be rendered in cards that look something like these:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ![examples, two people](./public/_____cc_1.png)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+4. Once you have a list, add the following filters, below the heading and above the list:
+
+   - "Search for people": typing performs a search against first & last names.
+   - "Filter by country": options should include "All," followed by an alphabetical list of countries that exist in the API response.
+
+5. Once these filters are working, add a mechanism to sort the list by the following parameters:
+
+   - Last name, ascending (A to Z)
+   - Last name, descending (Z to A)
+   - Birthday, ascending (oldest to youngest)
+   - Birthday, descending (youngest to oldest)
+
+6. At this point you should have something that may look like this, but with more people (if you use a different mechanism for sorting, that's totally fine):
+
+   ![completed project](./public/_____cc_2.png)
+
+7. Add a way to add, update, and remove a note for any person in the list. (Because the API is _random_, feel free to store these in application state; if the page has to reload, it's OK to lose any notes as there is no guarantee that you'll have the same identifiers for the people you receive from a request.) A few visual examples:
+   - Initial state with no notes:
+     ![card with 'add note' button](./public/_____cc_3.png)
+   - The form (if a note already exists, the label should read "Edit note"):
+     ![the open form, with a labeled input and submit and cancel buttons](./public/_____cc_4.png)
+   - Cards with notes attached:
+     ![multiple rendered notes, with a heading and edit and delete buttons](./public/_____cc_5.png)
+
+---
