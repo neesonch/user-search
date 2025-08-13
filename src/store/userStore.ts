@@ -7,6 +7,8 @@ interface UserState {
   getUsers: () => Promise<[]>;
   isUsersFetching: boolean;
   setUsersFetching: (isFetching: boolean) => void;
+  searchTerm: string;
+  setSearchTerm: (searchTerm: string) => void;
 }
 
 export const useUserStore = create<UserState>()((set) => ({
@@ -20,4 +22,6 @@ export const useUserStore = create<UserState>()((set) => ({
     const json = await response.json();
     return json.results;
   },
+  searchTerm: "",
+  setSearchTerm: (searchTerm: string) => set(() => ({ searchTerm })),
 }));
