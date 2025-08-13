@@ -1,6 +1,6 @@
 # user-search
 
-An implementation of the below coding challenge, done for the purposes of getting familiar with Vite and CSS Modules.
+An implementation of the below coding challenge, done for the purpose of getting familiar with Vite and CSS Modules.
 
 ---
 
