@@ -9,6 +9,8 @@ interface UserState {
   setUsersFetching: (isFetching: boolean) => void;
   searchTerm: string;
   setSearchTerm: (searchTerm: string) => void;
+  countryFilter: string;
+  setCountryFilter: (countryFilter: string) => void;
 }
 
 export const useUserStore = create<UserState>()((set) => ({
@@ -24,4 +26,6 @@ export const useUserStore = create<UserState>()((set) => ({
   },
   searchTerm: "",
   setSearchTerm: (searchTerm: string) => set(() => ({ searchTerm })),
+  countryFilter: "",
+  setCountryFilter: (countryFilter: string) => set(() => ({ countryFilter })),
 }));
