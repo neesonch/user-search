@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import { type User } from "../types";
+import { type User, type SortValue } from "../types";
+import { sortValues } from "../consts";
 
 interface UserState {
   users: User[];
@@ -11,6 +12,8 @@ interface UserState {
   setSearchTerm: (searchTerm: string) => void;
   countryFilter: string;
   setCountryFilter: (countryFilter: string) => void;
+  sortValue: SortValue;
+  setSortValue: (sortValue: SortValue) => void;
 }
 
 export const useUserStore = create<UserState>()((set) => ({
@@ -28,4 +31,6 @@ export const useUserStore = create<UserState>()((set) => ({
   setSearchTerm: (searchTerm: string) => set(() => ({ searchTerm })),
   countryFilter: "",
   setCountryFilter: (countryFilter: string) => set(() => ({ countryFilter })),
+  sortValue: sortValues.LAST_NAME_ASC,
+  setSortValue: (sortValue: SortValue) => set(() => ({ sortValue })),
 }));

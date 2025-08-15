@@ -1,5 +1,6 @@
 import { useUserStore } from "../../store/userStore";
 import { useEffect, useState } from "react";
+import { sortValues } from "../../consts";
 
 export const SearchControls = () => {
   const { searchTerm, setSearchTerm, users, setCountryFilter } = useUserStore();
@@ -13,11 +14,13 @@ export const SearchControls = () => {
 
   return (
     <div>
-      <input
-        placeholder="Search users"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      <div>
+        <input
+          placeholder="Search users"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
       <div>
         <label htmlFor="country-select">Select country</label>
         <select
@@ -28,6 +31,16 @@ export const SearchControls = () => {
           {countryOptions.map((country) => (
             <option key={country} value={country}>
               {country}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label htmlFor="sort-value-select">Sort by:</label>
+        <select id="sort-value-select">
+          {Object.values(sortValues).map((sortValue) => (
+            <option key={sortValue} value={sortValue}>
+              {sortValue}
             </option>
           ))}
         </select>

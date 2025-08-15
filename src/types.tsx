@@ -1,3 +1,5 @@
+import { sortValues } from "./consts";
+
 export type User = {
   name: {
     first: string;
@@ -28,3 +30,5 @@ export interface UserThumbnailProps {
 }
 
 export type UserDetailProps = Omit<User, "login" | "picture">;
+
+export type SortValue = (typeof sortValues)[keyof typeof sortValues];
